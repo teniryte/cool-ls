@@ -87,5 +87,6 @@ Options:
   -p, --plain             Displays files in a flat list, showing the full relative path (default: false)
   -d, --depth [number]    Limit the depth of the displayed tree
   -e, --exclude [string]  Exclude files matching the given regular expression
+  -a, --abs               Show absolute paths
   -h, --help              display help for command
 ```
