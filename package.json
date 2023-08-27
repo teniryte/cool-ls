@@ -1,6 +1,6 @@
 {
   "name": "cool-ls",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convenient replacement for the ls command",
   "main": "./dist/index.ts",
   "bin": {
@@ -8,6 +8,16 @@
   },
   "private": false,
   "keywords": [
+    "cli",
+    "file list",
+    "files",
+    "ls",
+    "list",
+    "tree",
+    "fs",
+    "directory",
+    "size",
+    "search",
     "tools",
     "utils"
   ],

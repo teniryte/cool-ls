@@ -6,7 +6,7 @@ import { listFiles } from '../list';
 const program = new Command();
 
 program
-  .version('0.0.1')
+  .version('0.1.0')
   .argument('[path]', 'Directory path')
   .action((directory: string) => {
     const opts = program.opts();
