@@ -19,6 +19,9 @@ export const listFiles = (options: ListOptionsInterface) => {
   // );
   const path = resolve(process.cwd(), options.path || '');
   const file = new File(path, options, -1);
+  if (!file.isDirectory) {
+    file.print();
+  }
   file.getFiles().forEach((file) => {
     file.print();
   });

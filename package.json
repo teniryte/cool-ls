@@ -1,6 +1,6 @@
 {
   "name": "cool-ls",
-  "version": "0.0.19",
+  "version": "0.1.0",
   "description": "Convenient replacement for the ls command",
   "main": "./dist/index.ts",
   "bin": {
