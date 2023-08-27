@@ -24,7 +24,9 @@ export class Display {
   }
 
   formatName(): string {
-    const name = this.file.options.isPlain
+    const name = this.file.options.isAbsolute
+      ? this.file.path
+      : this.file.options.isPlain
       ? this.file.relative
       : this.file.name;
     return stylize(name, {

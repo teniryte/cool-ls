@@ -19,6 +19,7 @@ program
       reg: opts.reg,
       depth: +opts.depth || 0,
       exclude: opts.exclude || '',
+      isAbsolute: opts.abs || '',
     });
   })
   .description('A user-friendly alternative for the standard "ls" command.')
@@ -40,4 +41,5 @@ program
     '-e, --exclude [string]',
     'Exclude files matching the given regular expression'
   )
+  .option('-a, --abs', 'Show absolute paths')
   .parse(process.argv);

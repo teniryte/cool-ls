@@ -7,4 +7,5 @@ export interface ListOptionsInterface {
   reg?: string;
   depth?: number;
   exclude?: string;
+  isAbsolute?: boolean;
 }

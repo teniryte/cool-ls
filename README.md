@@ -58,6 +58,14 @@ l --find .ts --exclude .d.ts --tree
 
 [![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot4.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot4.png)
 
+### Absolute paths
+
+```sh
+l /etc --abs --reg 'net' --tree
+```
+
+[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot5.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot5.png)
+
 ## Usage
 
 You can use the `l` command followed by various options and a directory path to utilize the utility. Here are some examples:
