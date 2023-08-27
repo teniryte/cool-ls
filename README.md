@@ -5,6 +5,15 @@
 
 **cool-ls** is a simple console utility designed to display a list of files. Upon installation, it adds the `l` command to the system, which shows a list of files and directories with sizes in a tree-like view, and provides the ability to search using regular expressions.
 
+## Features
+
+- List files and directories within a specified path.
+- Convenient replacements for common `ls` options.
+- Filter files by regular expressions or search strings.
+- Display directory sizes, subdirectories, and file trees.
+- Customizable tree depth.
+- Easy-to-use command-line interface.
+
 ## Installation
 
 To install the cool-ls, you can use NPM. Open your terminal or command prompt and run:
@@ -19,23 +28,25 @@ npm install -g cool-ls
 l /
 ```
 
-[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)
+[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot1.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot1.png)
 
 ```sh
 l --exclude 'node_modules|.git|dist' --tree --depth 2 --size
 ```
 
-[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot2.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot2.png)
+[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot2.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot2.png)
 
+```sh
+l --find .ts --exclude .d.ts
+```
 
-## Features
+[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot3.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot3.png)
 
-- List files and directories within a specified path.
-- Convenient replacements for common `ls` options.
-- Filter files by regular expressions or search strings.
-- Display directory sizes, subdirectories, and file trees.
-- Customizable tree depth.
-- Easy-to-use command-line interface.
+```sh
+l --find .ts --exclude .d.ts --tree
+```
+
+[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot4.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot4.png)
 
 ## Usage
 
@@ -55,7 +66,7 @@ Options:
   -r, --reg [string]      Filter filenames using a regular expression
   -t, --tree              Display subdirectories and files in a tree structure (default: false)
   -f, --find [string]     Search for files using a search string
-  -l, --long              Show full file paths (default: false)
+  -p, --plain             Displays files in a flat list, showing the full relative path (default: false)
   -d, --depth [number]    Limit the depth of the displayed tree
   -e, --exclude [string]  Exclude files matching the given regular expression
   -h, --help              display help for command

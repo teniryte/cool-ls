@@ -3,8 +3,9 @@ import { ListOptionsInterface } from './types/list-options.interface';
 import { File } from './classes/file.class';
 
 export const listFiles = (options: ListOptionsInterface) => {
-  if (options.find || options.reg) {
+  if ((options.find || options.reg) && !options.isTree) {
     options.isTree = true;
+    options.isPlain = true;
   }
   console.log('');
   const path = resolve(process.cwd(), options.path || '');

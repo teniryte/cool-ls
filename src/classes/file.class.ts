@@ -1,5 +1,5 @@
 import { Stats, readdirSync, realpathSync, statSync } from 'fs';
-import { basename, extname, resolve } from 'path';
+import { basename, extname, relative, resolve } from 'path';
 import { FileType } from '../types/file-type.enum';
 import { sortFiles } from '../utils/sort-files';
 import { Display } from './display.class';
@@ -17,6 +17,7 @@ export class File {
   original: File | null;
   display: Display;
   matcher: Matcher;
+  relative: string;
 
   constructor(
     public readonly path: string,
@@ -33,6 +34,7 @@ export class File {
         : this.stats.isDirectory()
         ? FileType.DIRECTORY
         : FileType.FILE;
+    this.relative = relative(this.options.path || process.cwd(), this.path);
     this.original =
       this.type === FileType.SYMLINK
         ? new File(this.real, this.options, level)
@@ -124,7 +126,9 @@ export class File {
   print(): void {
     const code = this.display.format();
     if (!code) return;
-    console.log(code);
+    if (!this.options.isPlain || this.matcher.test()) {
+      console.log(code);
+    }
     if (
       this.type === FileType.DIRECTORY &&
       this.options.isTree &&

@@ -15,7 +15,7 @@ program
       isSize: !!opts.size,
       isTree: !!opts.tree,
       find: opts.find || '',
-      isLong: !!opts.long,
+      isPlain: !!opts.plain,
       reg: opts.reg,
       depth: +opts.depth || 0,
       exclude: opts.exclude || '',
@@ -30,7 +30,11 @@ program
     false
   )
   .option('-f, --find [string]', 'Search for files using a search string')
-  .option('-l, --long', 'Show full file paths', false)
+  .option(
+    '-p, --plain',
+    'Displays files in a flat list, showing the full relative path',
+    false
+  )
   .option('-d, --depth [number]', 'Limit the depth of the displayed tree')
   .option(
     '-e, --exclude [string]',

@@ -1,24 +1,18 @@
 import { Testable } from '../types/testable.interface';
 
 export class Matcher {
-  regex: Testable;
-  excludeReg: Testable;
-
   constructor(
     public readonly name: string,
     public readonly find: string,
     public readonly reg: string,
     public readonly exclude: string
-  ) {
-    this.regex = this.getRegex();
-    this.excludeReg = this.getExcludeRegex();
-  }
+  ) {}
 
   test(): boolean {
-    if (this.exclude && this.excludeReg.test(this.name)) {
+    if (this.exclude && this.getExcludeRegex().test(this.name)) {
       return false;
     }
-    return this.regex.test(this.name);
+    return this.getRegex().test(this.name);
   }
 
   private getRegex(): Testable {

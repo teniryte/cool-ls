@@ -3,7 +3,7 @@ export interface ListOptionsInterface {
   isSize?: boolean;
   isTree?: boolean;
   find?: string;
-  isLong?: boolean;
+  isPlain?: boolean;
   reg?: string;
   depth?: number;
   exclude?: string;

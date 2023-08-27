@@ -19,11 +19,14 @@ export class Display {
   }
 
   formatIcon(): string {
+    if (this.file.options.isPlain) return '';
     return this.file.isDirectory ? '📁' : '';
   }
 
   formatName(): string {
-    const name = this.file.options.isLong ? this.file.real : this.file.name;
+    const name = this.file.options.isPlain
+      ? this.file.relative
+      : this.file.name;
     return stylize(name, {
       isDim: this.file.isHidden || this.file.isLink,
       color: this.file.isDirectory ? TextColor.YELLOW : TextColor.WHITE,
@@ -46,7 +49,6 @@ export class Display {
     const name = stylize(original?.path || '', {
       color: TextColor.MAGENTA,
     });
-    // const count = original?.isDirectory ? original.display.formatCount() : '';
     return name;
   }
 
@@ -60,6 +62,9 @@ export class Display {
   }
 
   getIndent(): string {
+    if (this.file.options.isPlain) {
+      return '  ';
+    }
     let indent = '';
     for (let i = 0; i < this.file.level; i++) {
       indent += '   ';
