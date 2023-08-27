@@ -25,9 +25,9 @@ export class Display {
 
   formatName(): string {
     const name = this.file.options.isAbsolute
-      ? this.file.path
+      ? this.file.path.path
       : this.file.options.isPlain
-      ? this.file.relative
+      ? this.file.path.relative
       : this.file.name;
     const options: StyleOptions = {
       isDim: this.file.isHidden,
@@ -49,7 +49,7 @@ export class Display {
   formatOriginal(): string {
     if (!this.file.isLink) return '';
     const original = this.file.original;
-    const name = stylize(original?.path || '', {
+    const name = stylize(original?.path?.path || '', {
       color: TextColor.WHITE,
       isDim: true,
     });

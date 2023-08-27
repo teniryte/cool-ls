@@ -7,34 +7,30 @@ import { ListOptionsInterface } from '../types/list-options.interface';
 import { dirsize } from '../utils/dirsize';
 import { Testable } from '../types/testable.interface';
 import { Matcher } from './matcher.class';
+import { Path } from './path.class';
 
 export class File {
   stats: Stats;
-  name: string;
-  ext: string;
-  real: string;
   type: FileType;
   original: File | null;
   display: Display;
   matcher: Matcher;
-  relative: string;
+  path: Path;
 
   constructor(
-    public readonly path: string,
+    path: string,
     public readonly options: ListOptionsInterface,
     public readonly level: number
   ) {
     this.stats = statSync(path);
-    this.name = basename(path);
-    this.ext = extname(path);
-    this.real = realpathSync(path);
+    this.path = new Path(path, options);
     this.type =
-      path !== this.real
+      path !== this.path.real
         ? FileType.SYMLINK
         : this.stats.isDirectory()
         ? FileType.DIRECTORY
         : FileType.FILE;
-    this.relative = relative(this.options.path || process.cwd(), this.path);
+
     this.original =
       this.type === FileType.SYMLINK
         ? new File(this.real, this.options, level)
@@ -46,6 +42,14 @@ export class File {
       this.options.reg || '',
       this.options.exclude || ''
     );
+  }
+
+  get real(): string {
+    return this.path.real;
+  }
+
+  get name(): string {
+    return this.path.name;
   }
 
   get isHidden(): boolean {
