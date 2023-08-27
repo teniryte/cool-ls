@@ -5,7 +5,7 @@
 
 cool-ls is a convenient replacement for the `ls` command, designed to provide enhanced file and directory listing capabilities through the command line.
 
-[![Screenchott](./screenshot.png)](./screenshot.png)
+[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)
 
 ## Features
 
