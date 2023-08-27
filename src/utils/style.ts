@@ -2,7 +2,6 @@ import { ColorsMethodName } from '../types/colors-method-name.type';
 import { StyleOptions } from '../types/style-options.interface';
 import colors from 'colors';
 import { TextStyleInterface } from '../types/text-style.interface';
-import { TextExtraInterface } from '../types/text-extra.interface';
 import { each } from 'lodash';
 
 interface Serializable {

@@ -1,6 +1,6 @@
 {
   "name": "cool-ls",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Convenient replacement for the ls command",
   "main": "./dist/index.ts",
   "bin": {
@@ -37,7 +37,11 @@
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
     "ts-node": "^10.8.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "@types/colors": "^1.2.1",
+    "@types/figlet": "^1.5.6",
+    "@types/lodash": "^4.14.197",
+    "@types/match-sorter": "^6.0.0"
   },
   "author": {
     "name": "teniryte",
@@ -50,10 +54,6 @@
     "url": "git@github.com:teniryte/cool-ls.git"
   },
   "dependencies": {
-    "@types/colors": "^1.2.1",
-    "@types/figlet": "^1.5.6",
-    "@types/lodash": "^4.14.197",
-    "@types/match-sorter": "^6.0.0",
     "colors": "^1.4.0",
     "commander": "^11.0.0",
     "lodash": "^4.17.21",

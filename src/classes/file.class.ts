@@ -6,6 +6,7 @@ import { Display } from './display.class';
 import { ListOptionsInterface } from '../types/list-options.interface';
 import { dirsize } from '../utils/dirsize';
 import { Testable } from '../types/testable.interface';
+import { Matcher } from './matcher.class';
 
 export class File {
   stats: Stats;
@@ -13,11 +14,9 @@ export class File {
   ext: string;
   real: string;
   type: FileType;
-  isHidden: boolean;
   original: File | null;
   display: Display;
-  reg: Testable;
-  excludeReg: Testable;
+  matcher: Matcher;
 
   constructor(
     public readonly path: string,
@@ -28,7 +27,6 @@ export class File {
     this.name = basename(path);
     this.ext = extname(path);
     this.real = realpathSync(path);
-    this.isHidden = this.name.startsWith('.');
     this.type =
       path !== this.real
         ? FileType.SYMLINK
@@ -40,8 +38,16 @@ export class File {
         ? new File(this.real, this.options, level)
         : null;
     this.display = new Display(this);
-    this.reg = this.getRegex();
-    this.excludeReg = this.getExcludeRegex();
+    this.matcher = new Matcher(
+      this.name,
+      this.options.find || '',
+      this.options.reg || '',
+      this.options.exclude || ''
+    );
+  }
+
+  get isHidden(): boolean {
+    return this.name.startsWith('.');
   }
 
   get isLink(): boolean {
@@ -68,46 +74,11 @@ export class File {
     return this.getFilenames().length;
   }
 
-  getRegex(): Testable {
-    if (this.options.reg) {
-      return new RegExp(this.options.reg, 'mgi');
-    }
-    if (this.options.find && this.options.find.startsWith('/')) {
-      const [, code, flags] = this.options.find.split('/');
-      return new RegExp(code, flags);
-    }
-    if (this.options.find) {
-      const find = this.options.find;
-      return {
-        test: (val: string) => {
-          return val.toLowerCase().includes(find.toLowerCase());
-        },
-      };
-    }
-    return {
-      test: (val: string) => true,
-    };
-  }
-
-  getExcludeRegex(): Testable {
-    if (this.options.exclude) {
-      return new RegExp(this.options.exclude, 'mgi');
-    }
-    return {
-      test: (val: string) => false,
-    };
-  }
-
   matches(): boolean {
-    if (this.options.exclude && this.excludeReg.test(this.name)) {
-      return false;
-    }
-    if (this.isDirectory)
-      return (
-        this.reg.test(this.name) ||
-        !!this.getFiles().find((file) => file.matches())
-      );
-    return this.reg.test(this.name);
+    const isMatch = this.matcher.test();
+    return this.isDirectory
+      ? isMatch || !!this.getFiles().find((file) => file.matches())
+      : isMatch;
   }
 
   getFiles(): File[] {
