@@ -1,6 +1,6 @@
 {
   "name": "cool-ls",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Simple console utility designed to display a list of files",
   "main": "./dist/index.ts",
   "bin": {

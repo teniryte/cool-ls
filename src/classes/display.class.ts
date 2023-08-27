@@ -1,9 +1,9 @@
 import { FileType } from '../types/file-type.enum';
+import { StyleOptions } from '../types/style-options.interface';
 import { TextColor } from '../types/text-color.enum';
 import { filesize } from '../utils/filesize';
 import { stylize } from '../utils/style';
 import { File } from './file.class';
-import colors from 'colors';
 
 export class Display {
   constructor(private file: File) {}
@@ -29,10 +29,12 @@ export class Display {
       : this.file.options.isPlain
       ? this.file.relative
       : this.file.name;
-    return stylize(name, {
-      isDim: this.file.isHidden || this.file.isLink,
+    const options: StyleOptions = {
+      isDim: this.file.isHidden,
       color: this.file.isDirectory ? TextColor.YELLOW : TextColor.WHITE,
-    });
+      isItalic: this.file.isLink,
+    };
+    return stylize(name, options);
   }
 
   formatArrow(): string {
@@ -40,8 +42,7 @@ export class Display {
     return stylize(`→`, {
       isDim: true,
       isBold: true,
-      isItalic: true,
-      color: TextColor.MAGENTA,
+      color: TextColor.BLUE,
     });
   }
 
@@ -49,7 +50,8 @@ export class Display {
     if (!this.file.isLink) return '';
     const original = this.file.original;
     const name = stylize(original?.path || '', {
-      color: TextColor.MAGENTA,
+      color: TextColor.WHITE,
+      isDim: true,
     });
     return name;
   }
