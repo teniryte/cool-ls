@@ -6,4 +6,5 @@ export interface ListOptionsInterface {
   isLong?: boolean;
   reg?: string;
   depth?: number;
+  exclude?: string;
 }

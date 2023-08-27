@@ -17,6 +17,7 @@ export class File {
   original: File | null;
   display: Display;
   reg: Testable;
+  excludeReg: Testable;
 
   constructor(
     public readonly path: string,
@@ -40,6 +41,7 @@ export class File {
         : null;
     this.display = new Display(this);
     this.reg = this.getRegex();
+    this.excludeReg = this.getExcludeRegex();
   }
 
   get isLink(): boolean {
@@ -87,7 +89,19 @@ export class File {
     };
   }
 
+  getExcludeRegex(): Testable {
+    if (this.options.exclude) {
+      return new RegExp(this.options.exclude, 'mgi');
+    }
+    return {
+      test: (val: string) => false,
+    };
+  }
+
   matches(): boolean {
+    if (this.options.exclude && this.excludeReg.test(this.name)) {
+      return false;
+    }
     if (this.isDirectory)
       return (
         this.reg.test(this.name) ||

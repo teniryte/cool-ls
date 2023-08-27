@@ -18,6 +18,7 @@ program
       isLong: !!opts.long,
       reg: opts.reg,
       depth: +opts.depth || 0,
+      exclude: opts.exclude || '',
     });
   })
   .description('Convenient replacement for the ls command.')
@@ -27,4 +28,5 @@ program
   .option('-f, --find [string]', 'File name search string')
   .option('-l, --long', 'Show full files path', false)
   .option('-d, --depth [number]', 'Tree depth')
+  .option('-e, --exclude [string]', 'RegExp to exclude')
   .parse(process.argv);
