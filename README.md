@@ -3,7 +3,7 @@
 
 # cool-ls
 
-cool-ls is a convenient replacement for the `ls` command, designed to provide enhanced file and directory listing capabilities through the command line.
+**cool-ls** is a simple console utility designed to display a list of files. Upon installation, it adds the `l` command to the system, which shows a list of files and directories with sizes in a tree-like view, and provides the ability to search using regular expressions.
 
 ## Installation
 
