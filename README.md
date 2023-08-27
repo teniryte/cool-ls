@@ -5,6 +5,14 @@
 
 cool-ls is a convenient replacement for the `ls` command, designed to provide enhanced file and directory listing capabilities through the command line.
 
+## Installation
+
+To install the cool-ls, you can use NPM. Open your terminal or command prompt and run:
+
+```bash
+npm install -g cool-ls
+```
+
 ## Examples
 
 ```sh
@@ -23,20 +31,11 @@ l --exclude 'node_modules|.git|dist' --tree --depth 2
 ## Features
 
 - List files and directories within a specified path.
-- Display detailed information about each file.
 - Convenient replacements for common `ls` options.
 - Filter files by regular expressions or search strings.
 - Display directory sizes, subdirectories, and file trees.
 - Customizable tree depth.
 - Easy-to-use command-line interface.
-
-## Installation
-
-To install the cool-ls, you can use NPM. Open your terminal or command prompt and run:
-
-```bash
-npm install -g cool-ls
-```
 
 ## Usage
 
