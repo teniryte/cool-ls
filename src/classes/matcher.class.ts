@@ -8,7 +8,7 @@ export class Matcher {
     public readonly exclude: string
   ) {}
 
-  test(): boolean {
+  isMatch(): boolean {
     return this.getRegex().test(this.name);
   }
 

@@ -80,12 +80,12 @@ export class File {
     return this.getFilenames().length;
   }
 
-  matches(): boolean {
+  isVisible(): boolean {
     const isExclude = this.matcher.isExclude();
     if (isExclude) return false;
-    const isMatch = this.matcher.test();
+    const isMatch = this.matcher.isMatch();
     return this.isDirectory
-      ? isMatch || !!this.getFiles().find((file) => file.matches())
+      ? isMatch || !!this.getFiles().find((file) => file.isVisible())
       : isMatch;
   }
 
@@ -132,7 +132,7 @@ export class File {
   print(): void {
     const code = this.display.format();
     if (!code) return;
-    if (!this.options.isPlain || this.matcher.test()) {
+    if (!this.options.isPlain || this.matcher.isMatch()) {
       console.log(code);
     }
     if (

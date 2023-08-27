@@ -80,7 +80,7 @@ export class Display {
   }
 
   format(): string {
-    if (!this.file.matches()) return '';
+    if (!this.file.isVisible()) return '';
     return (
       this.getIndent() +
       [
