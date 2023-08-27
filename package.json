@@ -1,6 +1,6 @@
 {
   "name": "cool-ls",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Convenient replacement for the ls command",
   "main": "./dist/index.ts",
   "bin": {
@@ -19,7 +19,9 @@
     "size",
     "search",
     "tools",
-    "utils"
+    "utils",
+    "directory size",
+    "show directory sizes"
   ],
   "scripts": {
     "test": "nodemon -q --watch 'test/**/*' --watch 'src/**/*' --ext 'ts,json' --exec 'mocha -w -r ts-node/register test/index.test.ts'",
