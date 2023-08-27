@@ -5,7 +5,20 @@
 
 cool-ls is a convenient replacement for the `ls` command, designed to provide enhanced file and directory listing capabilities through the command line.
 
+## Examples
+
+```sh
+l /
+```
+
 [![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)
+
+```sh
+l --exclude 'node_modules|.git|dist' --tree --depth 2
+```
+
+[![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot2.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot2.png)
+
 
 ## Features
 
@@ -41,44 +54,58 @@ l
 l /path/to/directory
 ```
 
-* Show directory sizes:
+* Calculate directory sizes:
 
 ```sh
 l -s
+l --size
 ```
 
 * Display subdirectories and files in a tree structure:
 
 ```sh
 l -t
+l --tree
 ```
 
 * Filter filenames using a regular expression:
 
 ```sh
-l -r pattern
+l -r '\d+'
+l --reg '\d+'
 ```
 
 * Search for files using a search string:
 
 ```sh
-l -f search_string
+l -f '.txt'
+l --find '.txt'
 ```
 
 * Show full file paths:
 
 ```sh
 l -l
+l --long
 ```
 
 * Limit tree depth:
 
 ```sh
 l -t -d 2
+l --tree --depth 2
+```
+
+* Exclude files:
+
+```sh
+l -e 'node_modules|.git'
+l --exclude 'node_modules|.git'
 ```
 
 * For a full list of options and usage examples, you can run:
 
 ```sh
 l -h
+l --help
 ```
