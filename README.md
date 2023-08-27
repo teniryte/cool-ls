@@ -41,70 +41,22 @@ l --exclude 'node_modules|.git|dist' --tree --depth 2
 
 You can use the `l` command followed by various options and a directory path to utilize the utility. Here are some examples:
 
-* List files and directories in the current directory:
-
 ```sh
-l
-```
+Usage: l [options] [path]
 
-* List files and directories in a specific path:
+A user-friendly alternative for the standard "ls" command.
 
-```sh
-l /path/to/directory
-```
+Arguments:
+  path                    Directory path
 
-* Calculate directory sizes:
-
-```sh
-l -s
-l --size
-```
-
-* Display subdirectories and files in a tree structure:
-
-```sh
-l -t
-l --tree
-```
-
-* Filter filenames using a regular expression:
-
-```sh
-l -r '\d+'
-l --reg '\d+'
-```
-
-* Search for files using a search string:
-
-```sh
-l -f '.txt'
-l --find '.txt'
-```
-
-* Show full file paths:
-
-```sh
-l -l
-l --long
-```
-
-* Limit tree depth:
-
-```sh
-l -t -d 2
-l --tree --depth 2
-```
-
-* Exclude files:
-
-```sh
-l -e 'node_modules|.git'
-l --exclude 'node_modules|.git'
-```
-
-* For a full list of options and usage examples, you can run:
-
-```sh
-l -h
-l --help
+Options:
+  -V, --version           output the version number
+  -s, --size              Display directory sizes (default: false)
+  -r, --reg [string]      Filter filenames using a regular expression
+  -t, --tree              Display subdirectories and files in a tree structure (default: false)
+  -f, --find [string]     Search for files using a search string
+  -l, --long              Show full file paths (default: false)
+  -d, --depth [number]    Limit the depth of the displayed tree
+  -e, --exclude [string]  Exclude files matching the given regular expression
+  -h, --help              display help for command
 ```
