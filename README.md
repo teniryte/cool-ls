@@ -27,58 +27,58 @@ npm install -g cool-ls
 
 ## Usage
 
-You can use the `ls` command followed by various options and a directory path to utilize the utility. Here are some examples:
+You can use the `l` command followed by various options and a directory path to utilize the utility. Here are some examples:
 
 * List files and directories in the current directory:
 
 ```sh
-ls
+l
 ```
 
 * List files and directories in a specific path:
 
 ```sh
-ls /path/to/directory
+l /path/to/directory
 ```
 
 * Show directory sizes:
 
 ```sh
-ls -s
+l -s
 ```
 
 * Display subdirectories and files in a tree structure:
 
 ```sh
-ls -t
+l -t
 ```
 
 * Filter filenames using a regular expression:
 
 ```sh
-ls -r pattern
+l -r pattern
 ```
 
 * Search for files using a search string:
 
 ```sh
-ls -f search_string
+l -f search_string
 ```
 
 * Show full file paths:
 
 ```sh
-ls -l
+l -l
 ```
 
 * Limit tree depth:
 
 ```sh
-ls -t -d 2
+l -t -d 2
 ```
 
 * For a full list of options and usage examples, you can run:
 
 ```sh
-ls -h
+l -h
 ```

@@ -5,10 +5,7 @@ import { sortFiles } from '../utils/sort-files';
 import { Display } from './display.class';
 import { ListOptionsInterface } from '../types/list-options.interface';
 import { dirsize } from '../utils/dirsize';
-
-interface Testable {
-  test(val: string): boolean;
-}
+import { Testable } from '../types/testable.interface';
 
 export class File {
   stats: Stats;
