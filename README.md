@@ -24,11 +24,15 @@ npm install -g cool-ls
 
 ## Examples
 
+### List
+
 ```sh
 l /
 ```
 
 [![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot1.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot1.png)
+
+### Tree
 
 ```sh
 l --exclude 'node_modules|.git|dist' --tree --depth 2 --size
@@ -36,11 +40,17 @@ l --exclude 'node_modules|.git|dist' --tree --depth 2 --size
 
 [![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot2.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot2.png)
 
+### Search
+
 ```sh
 l --find .ts --exclude .d.ts
+
+l --reg '\.ts'
 ```
 
 [![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot3.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/docs/images/screenshot3.png)
+
+### Tree search
 
 ```sh
 l --find .ts --exclude .d.ts --tree
