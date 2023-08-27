@@ -9,10 +9,11 @@ export class Matcher {
   ) {}
 
   test(): boolean {
-    if (this.exclude && this.getExcludeRegex().test(this.name)) {
-      return false;
-    }
     return this.getRegex().test(this.name);
+  }
+
+  isExclude(): boolean {
+    return !!this.exclude && this.getExcludeRegex().test(this.name);
   }
 
   private getRegex(): Testable {

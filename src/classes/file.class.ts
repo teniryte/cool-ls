@@ -77,6 +77,8 @@ export class File {
   }
 
   matches(): boolean {
+    const isExclude = this.matcher.isExclude();
+    if (isExclude) return false;
     const isMatch = this.matcher.test();
     return this.isDirectory
       ? isMatch || !!this.getFiles().find((file) => file.matches())
