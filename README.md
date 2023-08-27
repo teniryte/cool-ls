@@ -22,7 +22,7 @@ l /
 [![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot.png)
 
 ```sh
-l --exclude 'node_modules|.git|dist' --tree --depth 2
+l --exclude 'node_modules|.git|dist' --tree --depth 2 --size
 ```
 
 [![Screenshot](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot2.png)](https://raw.githubusercontent.com/teniryte/cool-ls/main/screenshot2.png)
