@@ -8,6 +8,7 @@ export const listFiles = (options: ListOptionsInterface) => {
   if (options.find || options.reg) {
     options.isTree = true;
   }
+  console.log('');
   // console.log(
   //   stylize(
   //     '|--------------------------------------------------------------------|',
@@ -21,6 +22,7 @@ export const listFiles = (options: ListOptionsInterface) => {
   file.getFiles().forEach((file) => {
     file.print();
   });
+  console.log('');
   // console.log(
   //   stylize(
   //     '|--------------------------------------------------------------------|',
