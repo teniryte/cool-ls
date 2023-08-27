@@ -1,0 +1,37 @@
+{
+  "name": "cool-ls",
+  "version": "0.0.1",
+  "description": "Convenient replacement for the ls command",
+  "main": "./dist/index.ts",
+  "bin": {
+    "bin": "./dist/bin/index.js"
+  },
+  "private": false,
+  "keywords": [
+    "tools",
+    "utils"
+  ],
+  "scripts": {
+    "test": "nodemon -q --watch 'test/**/*' --watch 'src/**/*' --ext 'ts,json' --exec 'mocha -w -r ts-node/register test/index.test.ts'",
+    "dev": "nodemon -w src -e ts --exec 'ts-node src/app.ts'",
+    "build": "tsc --watch"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  },
+  "author": {
+    "name": "teniryte",
+    "email": "teniryte@gmail.com"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/teniryte/cool-ls",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:teniryte/cool-ls.git"
+  }
+}
