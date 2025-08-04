@@ -1,26 +1,48 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { listFiles } from '../list';
+import { FileListerService } from '../services/file-lister.service';
+import { FileSystemService } from '../services/file-system.service';
+import { FilterService } from '../services/filter.service';
+import { DisplayService, FormatterService } from '../services/display.service';
 
 const program = new Command();
 
+// Initialize services
+const fileSystem = new FileSystemService();
+const filter = new FilterService();
+const formatter = new FormatterService();
+const display = new DisplayService(formatter);
+const fileLister = new FileListerService(fileSystem, filter, display);
+
 program
-  .version('0.1.0')
+  .version('0.1.13')
   .argument('[path]', 'Directory path')
-  .action((directory: string) => {
-    const opts = program.opts();
-    listFiles({
-      path: directory || process.cwd(),
-      isSize: !!opts.size,
-      isTree: !!opts.tree,
-      find: opts.find || '',
-      isPlain: !!opts.plain,
-      reg: opts.reg,
-      depth: +opts.depth || 0,
-      exclude: opts.exclude || '',
-      isAbsolute: opts.abs || '',
-    });
+  .action(async (directory: string) => {
+    try {
+      const opts = program.opts();
+
+      await fileLister.listFiles({
+        path: directory || process.cwd(),
+        isSize: !!opts.size,
+        isTree: !!opts.tree,
+        find: opts.find || '',
+        isPlain: !!opts.plain,
+        reg: opts.reg,
+        depth: +opts.depth || 0,
+        exclude: opts.exclude || '',
+        isAbsolute: !!opts.abs,
+      });
+    } catch (error) {
+      console.error(
+        'Error:',
+        error instanceof Error ? error.message : String(error)
+      );
+      process.exit(1);
+    } finally {
+      // Clean up caches
+      fileLister.clearCaches();
+    }
   })
   .description('A user-friendly alternative for the standard "ls" command.')
   .option('-s, --size', 'Display directory sizes', false)

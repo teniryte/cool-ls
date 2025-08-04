@@ -1,8 +1,8 @@
 {
   "name": "cool-ls",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Simple console utility designed to display a list of files",
-  "main": "./dist/index.ts",
+  "main": "./dist/index.js",
   "bin": {
     "l": "./dist/bin/l.js"
   },
@@ -27,7 +27,7 @@
     "test": "nodemon -q --watch 'test/**/*' --watch 'src/**/*' --ext 'ts,json' --exec 'mocha -w -r ts-node/register test/index.test.ts'",
     "dev": "nodemon -w src -e ts --exec 'ts-node src/bin/ls.ts'",
     "app": "nodemon -w src -e ts --exec 'ts-node src/app.ts'",
-    "build": "tsc --watch",
+    "build": "tsc",
     "prebuild": "tsc -p ./tsconfig.json; "
   },
   "devDependencies": {
